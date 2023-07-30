@@ -3,26 +3,26 @@ pipeline {
     stages {
         stage('Pull Code From GitHub') {
             steps {
-                git 'https://github.com/Iam-mithran/kuber.git'
+                git 'https://github.com/VINAYAGAM1/K8S.git'
             }
         }
-        stage('Build the Docker image') {
+        stage('BUILDER VINAYAK') {
             steps {
-                sh 'sudo docker build -t newimage /var/lib/jenkins/workspace/kuber'
-                sh 'sudo docker tag newimage iammithran/newimage:latest'
-                sh 'sudo docker tag newimage iammithran/newimage:${BUILD_NUMBER}'
+                sh 'sudo docker build -t jass /var/lib/jenkins/workspace/kuber'
+                sh 'sudo docker tag jass vinayagamvaratha/jass:latest'
+                sh 'sudo docker tag jass vinayagamvaratha/jass:${BUILD_NUMBER}'
             }
         }
-        stage('Push the Docker image') {
+        stage('PUSH DOC6 VINAYAK') {
             steps {
-                sh 'sudo docker image push iammithran/newimage:latest'
-                sh 'sudo docker image push iammithran/newimage:${BUILD_NUMBER}'
+                sh 'sudo docker image push vinayagamvaratha/jass:latest'
+                sh 'sudo docker image push vinayagamvaratha/jass:${BUILD_NUMBER}'
             }
         }
-        stage('Deploy on Kubernetes') {
+        stage('vinayak DEPLOY k8s') {
             steps {
-                sh 'kubectl apply -f /var/lib/jenkins/workspace/kuber/pod.yaml'
-                sh 'kubectl rollout restart deployment loadbalancer-pod'
+                sh 'sudo kubectl apply -f /var/lib/jenkins/workspace/kuber/pod.yaml'
+                sh 'sudo kubectl rollout restart deployment loadbalancer-pod'
             }
         }
     }
