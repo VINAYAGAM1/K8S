@@ -27,5 +27,5 @@ spec:
     spec:
       containers:
         - name: hello
-          image: muralikrishna/vinay:latest
+          image: 63179954/vinayak:latest
           imagePullPolicy: Always
